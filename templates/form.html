@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{content.title}}</title>
+    <style type="text/css">
+        body{
+           text-align: center;
+        }
+        .menu{
+            display: inline-block;
+            margin-top: 40px;
+        }
+        .content{
+            text-align: center;
+            margin-top: 20px;
+        }
+        ul {
+          list-style: none; /*убираем маркеры списка*/
+          margin: 0; /*убираем отступы*/
+          padding-left: 0; /*убираем отступы*/
+          margin-top:25px; /*делаем отступ сверху*/
+        }
+        a {
+          text-decoration: none; /*убираем подчеркивание текста ссылок*/
+          background: #272f39; /*добавляем фон к пункту меню*/
+          color:#fff; /*меняем цвет ссылок*/
+          padding:10px; /*добавляем отступ*/
+          font-family: arial; /*меняем шрифт*/
+          border-radius:4px; /*добавляем скругление*/
+          -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+          -o-transition: all 0.3s 0.01s ease;
+          -webkit-transition: all 0.3s 0.01s ease;
+        }
+        a:hover {
+          background: #1c85bb;/*добавляем эффект при наведении*/
+        }
+        li {
+          float:left; /*Размещаем список горизонтально для реализации меню*/
+          margin-right:5px; /*Добавляем отступ у пунктов меню*/
+        }
+        form input{
+          box-sizing: border-box;
+          padding: 10px;
+          margin-bottom: 20px;
+          //margin-left: 40%;
+          width: 25%;
+          height: 35px;
+          border: 1px solid #ff8c00;
+        }
+        .button {
+          width: 25%;
+          font-size: 14pt;
+          color: white;
+          background: #7F113E;
+          height: 55px;
+          padding: 10px;
+          border: 1px solid #F5C4AB;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+         <ul>
+            <li>
+                <a href="index">Главная</a>
+            </li>
+            <li>
+                <a href="about">Обо мне</a>
+            </li>
+            <li>
+                <a href="form">Форма отправки</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="form">
+            <form method="post">
+                <input type="text" name="title" placeholder="Заголовок"><br>
+                <input type="text" name="text" placeholder="Текст сообщения"><br>
+                <input type="email" name="email" placeholder="email"><br>
+                <button class="button" type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
