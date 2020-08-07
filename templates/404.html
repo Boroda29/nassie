@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{content.title}}</title>
+    <style type="text/css">
+        body{
+           text-align: center;
+        }
+        .menu{
+            display: inline-block;
+            margin-top: 40px;
+        }
+        .content{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .content p{
+            font-size: 200px;
+        }
+        ul {
+          list-style: none; /*убираем маркеры списка*/
+          margin: 0; /*убираем отступы*/
+          padding-left: 0; /*убираем отступы*/
+          margin-top:25px; /*делаем отступ сверху*/
+        }
+        a {
+          text-decoration: none; /*убираем подчеркивание текста ссылок*/
+          background: #272f39; /*добавляем фон к пункту меню*/
+          color:#fff; /*меняем цвет ссылок*/
+          padding:10px; /*добавляем отступ*/
+          font-family: arial; /*меняем шрифт*/
+          border-radius:4px; /*добавляем скругление*/
+          -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+          -o-transition: all 0.3s 0.01s ease;
+          -webkit-transition: all 0.3s 0.01s ease;
+        }
+        a:hover {
+          background: #1c85bb;/*добавляем эффект при наведении*/
+        }
+        li {
+          float:left; /*Размещаем список горизонтально для реализации меню*/
+          margin-right:5px; /*Добавляем отступ у пунктов меню*/
+
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+         <ul>
+            <li>
+                <a href="index">Главная</a>
+            </li>
+            <li>
+                <a href="about">Обо мне</a>
+            </li>
+            <li>
+                <a href="form">Форма отправки</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <p>404</p>
+    </div>
+</body>
+</html>
