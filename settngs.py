@@ -1,5 +1,8 @@
-from controllers.pages import Index, About, Form
 from controllers.fronts import *
+from apps.main.pages import Index
+from apps.about.pages import About
+from apps.sender_form.pages import Form
+
 
 ROUTES = {
     "/": Index(),
@@ -9,8 +12,7 @@ ROUTES = {
 }
 
 FRONTS = [
-    time_call,
-    add_title,
-    add_page,
-    get_method_data_request
+    time_call
 ]
+
+

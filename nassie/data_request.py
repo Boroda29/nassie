@@ -1,12 +1,12 @@
-from nassie.consts import CONTENT_TYPE_APP_FORM, CONTENT_TYPE_FORM_DATA
+from nassie.constants import CONTENT_TYPE_APP_FORM, CONTENT_TYPE_FORM_DATA
 import quopri
 
-# TODO перенести в основной фреимворк
+
 class DataRequest:
     def __init__(self, environ):
         self.environ = environ
         self.method = environ['REQUEST_METHOD']
-        self.content_type = ""
+        self.content_type = None
 
     def _parse_get_post_app_form(self):
         result = {}
@@ -35,7 +35,7 @@ class DataRequest:
         content_length = int(content_length_data) if content_length_data else 0
 
         if content_length > 0:
-            data = self.environ['wsgi.input'].read(content_length)
+            data = self.environ['WSGI_INPUT'].read(content_length)
         else:
             return result
 

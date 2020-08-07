@@ -1,0 +1,11 @@
+from nassie.views import View
+
+class Index(View):
+    def __init__(self):
+        super().__init__()
+        self.name_template = ""
+        self.namespace = ":namespace:"
+        self.title = ""
+
+    def view_as(self, request):
+        pass

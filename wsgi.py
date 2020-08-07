@@ -1,40 +1,40 @@
 import datetime
 
-from nassie.common import templator
-from nassie.consts import CONTENT_TYPE_TEXT_HTML, ENCODING, STATUS_CODE
+from settngs import ROUTES, FRONTS
+from nassie.controllers.pages import Error404
+from nassie.constants import CONTENT_TYPE_TEXT_HTML, ENCODING, MAP_ENV_DATA_WSGI
+from nassie.controllers.fronts import FrontControllerApp
 
 
 class Application:
+    def __init__(self, env):
+        self.routes = ROUTES
+        self.fronts = [FrontControllerApp.add_attr_pages,
+                       FrontControllerApp.get_method_data_request]
+        self.data_env = {}
 
-    class Error404:
-        def __init__(self):
-            self.name_template = "404.html"
+        for method in FRONTS:
+            self.fronts.append(method)
 
-        def __call__(self, request):
-            request['TITLE'] = "404"
-            request['PAGE'] = self.name_template
-            body = templator.render(self.name_template, content=request)
-            return STATUS_CODE["404"], body
+        for key, val in MAP_ENV_DATA_WSGI.items():
+            self.data_env[val] = None
+            obj_item = env.get(key)
+            if obj_item:
+                self.data_env[val] = obj_item
 
-    def __init__(self, routes, fronts):
-        self.routes = routes
-        self.fronts = fronts
-
-    def __call__(self, environ, start_response):
+    def call_as(self, start_response):
         print(f"--------START: {datetime.datetime.now()} ---------")
-        print(f"-------- environ ---------\n{environ}\n-------- environ ---------")
+        print(f"-------- environ ---------\n{self.data_env}\n-------- environ ---------")
 
-        path = environ["PATH_INFO"]
+        path_info = self.data_env["PATH_INFO"]
         request = {}
         for front in self.fronts:
-            front(request, env=environ)
+            front(request, env=self.data_env)
+        view = Error404()
 
-        view = self.Error404()
-
-        if path in self.routes:
-            view = self.routes[path]
-        code, body = view(request)
-        print(request)
+        if path_info in self.routes:
+            view = self.routes[path_info]
+        code, body = view.view_as(request)
         start_response(code, [CONTENT_TYPE_TEXT_HTML])
         return [bytes(body, encoding=ENCODING)]
 

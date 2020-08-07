@@ -1,39 +1,48 @@
-from nassie.consts import *
-from nassie.common import templator
+from nassie.constants import *
+from nassie import templator
+from nassie.controllers.pages import View
 
 
-# Todo Доделать возвращение POST в отдельную функцию. пока сделать там просто Print
-# TODO Сделать на абстрактных классах
-class Index:
+class Index(View):
     def __init__(self):
+        super().__init__()
         self.name_template = "index.html"
+        self.namespace = "index"
+        self.title = "Главная"
 
-    def __call__(self, request):
-        request['TITLE'] = "Главная"
-        request['PAGE'] = self.name_template
-        request['DATA_CONTENT'] = None
+    def view_as(self, request):
+        request = self.write_in_request(request)
+        request['content_data'] = None
         body = templator.render(self.name_template, content=request)
-        return STATUS_CODE["200"], body
+        return STATUS_CODE['200'], body
 
-class About:
+
+class About(View):
     def __init__(self):
+        super().__init__()
         self.name_template = "about.html"
+        self.namespace = "about"
+        self.title = "Обо мне"
 
-    def __call__(self, request):
-        request['TITLE'] = "Обо мне"
-        request['PAGE'] = self.name_template
-        request['DATA_CONTENT'] = {'name': "Александр", "tg": "@sanboroda"}
+    def view_as(self, request):
+        request = self.write_in_request(request)
+        request['content_data'] = {'name': "Александр", "tg": "@sanboroda"}
         body = templator.render(self.name_template, content=request)
-        return STATUS_CODE["200"], body
+        return STATUS_CODE['200'], body
 
-class Form:
+
+class Form(View):
     def __init__(self):
+        super().__init__()
         self.name_template = "form.html"
+        self.namespace = "form"
+        self.title = "Тест форма отправки"
 
-    def __call__(self, request):
-        request['TITLE'] = "Тест формы отправки"
-        request['PAGE'] = self.name_template
-        request['DATA_CONTENT'] = None
+    def view_as(self, request):
+        request = self.write_in_request(request)
+        request['content_data'] = None
         body = templator.render(self.name_template, content=request)
-        return STATUS_CODE["200"], body
-
+        if request['request_method'] == 'POST':
+            self.method_post(request)
+            body = templator.render(Index().name_template, content=request)
+        return STATUS_CODE['200'], body
