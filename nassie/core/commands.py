@@ -1,9 +1,10 @@
 import os
-
 from nassie.constants import BASE_DIR
 from nassie.core.utils import exists_path
+from nassie.templator import TemplatorFactory
 
 def startapp(name_app):
+    factory = TemplatorFactory.create("APP").get()
     packet_name_files = {"pages": "namespace"}
     path_error = False
     paths_pack = {
@@ -38,14 +39,16 @@ def startapp(name_app):
                 break
 
             path_file_new = os.path.join(paths_pack["new_app"], f"{file_name}.py")
-
-            file_template = open(path_file_template, 'r', encoding='utf-8')
             file_page = open(path_file_new, 'w', encoding='utf-8')
-            with file_template as f:
-                file_page.write(f.read().replace(f":{field}:", name_app))
+            file_page.write(factory.render(name_app))
             file_page.close()
-            file_template.close()
+
+def help_cmd():
+    file_help = open(os.path.join(BASE_DIR, "nassie", "docs", "ref", "help.txt"), "r", encoding="utf-8")
+    text_help = file_help.read()
+    file_help.close()
+    print(text_help)
 
 
 if __name__ == '__main__':
-    startapp("test")
+    help_cmd()

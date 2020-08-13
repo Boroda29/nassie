@@ -1,11 +1,11 @@
 import abc
-
-from nassie import templator
 from nassie.constants import STATUS_CODE
+from nassie.templator import TemplatorFactory
 
 
 class View(abc.ABC):
     def __init__(self):
+        self.templator = TemplatorFactory.create("HTML").get()
         self.page = None
         self.namespace = None
         self.title = None
@@ -37,7 +37,7 @@ class Error404(View):
 
     def view_as(self, request):
         request = self.write_in_request(request)
-        body = templator.render(self.name_template, content=request)
+        body = self.templator.render(self, content=request)
         return STATUS_CODE["404"], body
 
 
