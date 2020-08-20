@@ -1,8 +1,6 @@
 from nassie.models import Model
 
-class Student(Model):
-    _model_name_ = "students"
-
+class Students(Model):
     def __init__(self, firstname, lastname, course):
         self.firstname = firstname
         self.lastname = lastname
@@ -10,6 +8,6 @@ class Student(Model):
 
 
 if __name__ == '__main__':
-    from apps.course.models import Cours
-    Student("python", "описание", Cours("python", "описание")).save()
-    Student("java", "описание", Cours("java", "описание")).save()
+    from apps.course.models import Courses
+    Students("python", "описание", Courses("python", "описание")).save()
+    Students("java", "описание", Courses("java", "описание")).save()

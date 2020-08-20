@@ -1,15 +1,15 @@
 from nassie.constants import *
 from nassie.controllers.pages import View
-from apps.students.models import Student
+from apps.students.models import Students
 import settngs
 
-class Students(View):
+class Student(View):
     def __init__(self):
         super().__init__()
         self.name_template = "students.html"
         self.namespace = "students"
         self.title = "Студенты"
-        self.model = Student
+        self.model = Students
 
     def view_as(self, request):
         request = self.write_in_request(request)

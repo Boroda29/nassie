@@ -1,6 +1,6 @@
 from nassie.constants import *
 from nassie.controllers.pages import View
-from apps.course.models import Cours
+from apps.course.models import Courses
 import settngs
 
 class Course(View):
@@ -9,7 +9,7 @@ class Course(View):
         self.name_template = "course.html"
         self.namespace = "course"
         self.title = "Курсы"
-        self.model = Cours
+        self.model = Courses
 
     def view_as(self, request):
         request = self.write_in_request(request)
