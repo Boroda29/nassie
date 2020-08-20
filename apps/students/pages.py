@@ -2,6 +2,7 @@ from nassie.constants import *
 from nassie.controllers.pages import View
 from apps.students.models import Students
 import settngs
+from nassie.decors import review_request, fill_request
 
 class Student(View):
     def __init__(self):
@@ -11,8 +12,8 @@ class Student(View):
         self.title = "Студенты"
         self.model = Students
 
+    @fill_request
     def view_as(self, request):
-        request = self.write_in_request(request)
         content_data = {"courses": settngs.DATA_BASE["courses"],
                         "students": settngs.DATA_BASE["students"]}
 
@@ -22,6 +23,7 @@ class Student(View):
         body = self.templator.render(self, content=request)
         return STATUS_CODE['200'], body
 
+    @review_request
     def method_post(self, request):
         self.model(request['request_data']['firstname'],
                    request['request_data']['lastname'],

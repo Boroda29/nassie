@@ -1,0 +1,2 @@
+from nassie.models import Model
+

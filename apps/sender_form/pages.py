@@ -1,6 +1,7 @@
 from nassie.constants import *
 from nassie.controllers.pages import View
 from apps.main.pages import Index
+from nassie.decors import fill_request
 
 class Form(View):
     def __init__(self):
@@ -9,8 +10,8 @@ class Form(View):
         self.namespace = "sender_form"
         self.title = "Тест форма отправки"
 
+    @fill_request
     def view_as(self, request):
-        request = self.write_in_request(request)
         request['content_data'] = None
         body = self.templator.render(self, content=request)
         if request['request_method'] == 'POST':

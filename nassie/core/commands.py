@@ -5,7 +5,8 @@ from nassie.templator import TemplatorFactory
 
 def startapp(name_app):
     factory = TemplatorFactory.create("APP").get()
-    packet_name_files = {"pages": "namespace"}
+    packet_name_files = {"pages": "namespace",
+                         "models": ""}
     path_error = False
     paths_pack = {
         "apps": os.path.join(BASE_DIR, "apps"),
@@ -31,8 +32,8 @@ def startapp(name_app):
         file_init = open(os.path.join(paths_pack["new_app"], f"__init__.py"), 'w', encoding='utf-8')
         file_init.close()
 
-        file_init = open(os.path.join(paths_pack["templates_app"], f"{name_app}.html"), 'w', encoding='utf-8')
-        file_init.close()
+        name_app = open(os.path.join(paths_pack["templates_app"], f"{name_app}.html"), 'w', encoding='utf-8')
+        name_app.close()
 
         for file_name, field in packet_name_files.items():
             path_file_template = os.path.join(paths_pack["ref"], f"{file_name}.txt")
