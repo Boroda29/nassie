@@ -1,5 +1,6 @@
 from nassie.constants import *
 from nassie.controllers.pages import View
+from nassie.decors import fill_request
 
 class {{content.name}}(View):
     def __init__(self):
@@ -8,5 +9,6 @@ class {{content.name}}(View):
         self.namespace = "{{content.namespace}}"
         self.title = ""
 
+    @fill_request
     def view_as(self, request):
         pass

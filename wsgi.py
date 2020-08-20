@@ -1,5 +1,4 @@
 import datetime
-
 from settngs import ROUTES, FRONTS
 from nassie.controllers.pages import Error404
 from nassie.constants import CONTENT_TYPE_TEXT_HTML, ENCODING, MAP_ENV_DATA_WSGI
@@ -23,8 +22,8 @@ class Application:
                 self.data_env[val] = obj_item
 
     def call_as(self, start_response):
-        print(f"--------START: {datetime.datetime.now()} ---------")
-        print(f"-------- environ ---------\n{self.data_env}\n-------- environ ---------")
+        # print(f"--------START: {datetime.datetime.now()} ---------")
+        # print(f"-------- environ ---------\n{self.data_env}\n-------- environ ---------")
 
         path_info = self.data_env["PATH_INFO"]
         request = {}
