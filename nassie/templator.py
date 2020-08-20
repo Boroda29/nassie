@@ -1,22 +1,33 @@
-import os
-from jinja2 import Template
-from jinja2 import FileSystemLoader
-from jinja2.environment import Environment
-
-from nassie.constants import BASE_DIR
+import abc
+from nassie.core.type_templators import HTML, App
 
 
-def render(template_name, namespace, **kwargs):
-    # path_templates = os.path.join(BASE_DIR, "apps", namespace, "templates", template_name)
-    path_templates = template_name
+class TemplatorFactory(abc.ABC):
+    @staticmethod
+    def create(network_name):
+        NETWORKS = {
+            'HTML': HtmlFactory,
+            'APP': AppFactory
+        }
+        return NETWORKS[network_name]()
 
-    path_loader = os.path.join(BASE_DIR, "templates")
-    file_loader = FileSystemLoader(path_loader)
-    env = Environment(loader=file_loader)
+    @abc.abstractmethod
+    def get(self):
+        pass
 
-    template = env.get_template(path_templates)
-    return template.render(**kwargs)
+
+class HtmlFactory(TemplatorFactory):
+    def get(self):
+        return HTML()
+
+class AppFactory(TemplatorFactory):
+    def get(self):
+        return App()
 
 
 if __name__ == '__main__':
-    print(render("about.html", "about", content={"title": "Главная", 'content_data':{'name': "Александр", "tg": "@sanboroda"}}))
+    from apps.main.pages import Index
+    from nassie.controllers.pages import Error404
+    factory = TemplatorFactory.create("HTML").get()
+    template = factory.render(Error404(), content={"title": "Главная"})
+    print(template)

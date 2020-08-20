@@ -1,7 +1,8 @@
-from nassie.core.commands import startapp
+from nassie.core.commands import startapp, help_cmd
 
 commands = {
-    "startapp": startapp
+    "startapp": startapp,
+    "help": help_cmd
 }
 
 def execute(argv):
@@ -18,5 +19,11 @@ def execute(argv):
     if subcommand and options:
         if subcommand in commands:
             commands[subcommand](options)
+        else:
+            help_cmd()
     else:
-        pass
+        help_cmd()
+
+
+if __name__ == '__main__':
+    execute(["", "alksjd"])

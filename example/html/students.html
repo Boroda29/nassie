@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://127.0.0.1:8000/students -->
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <title>Студенты</title>
+
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+
+        .menu {
+            display: inline-block;
+            margin-top: 40px;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none; /*убираем маркеры списка*/
+            margin: 0; /*убираем отступы*/
+            padding-left: 0; /*убираем отступы*/
+            margin-top: 25px; /*делаем отступ сверху*/
+        }
+
+        a {
+            text-decoration: none; /*убираем подчеркивание текста ссылок*/
+            background: #272f39; /*добавляем фон к пункту меню*/
+            color: #fff; /*меняем цвет ссылок*/
+            padding: 10px; /*добавляем отступ*/
+            font-family: arial; /*меняем шрифт*/
+            border-radius: 4px; /*добавляем скругление*/
+            -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+            -o-transition: all 0.3s 0.01s ease;
+            -webkit-transition: all 0.3s 0.01s ease;
+        }
+
+        a:hover {
+            background: #1c85bb; /*добавляем эффект при наведении*/
+        }
+
+        li {
+            float: left; /*Размещаем список горизонтально для реализации меню*/
+            margin-right: 5px; /*Добавляем отступ у пунктов меню*/
+        }
+
+        form input {
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 25%;
+            height: 35px;
+            border: 1px solid #ff8c00;
+        }
+
+        form select {
+            height: 35px;
+            border: 1px solid #ff8c00;
+            width: 15%;
+        }
+
+        .button {
+            width: 25%;
+            font-size: 14pt;
+            color: white;
+            background: #7F113E;
+            height: 55px;
+            padding: 10px;
+            border: 1px solid #F5C4AB;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <ul>
+        <li>
+            <a href="http://127.0.0.1:8000/index">Главная</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/about">Обо мне</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/form">Форма отправки</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/course">Курсы</a>
+        </li>
+        <li>
+            <a href="http://127.0.0.1:8000/students">Студенты</a>
+        </li>
+    </ul>
+</div>
+<div class="content">
+
+    <form method="post">
+        <input type="text" name="firstname" placeholder="Имя"><br>
+        <input type="text" name="lastname" placeholder="Фамилия"><br>
+        <select>
+            <option>Пункт 1</option>
+            <option>Пункт 2</option>
+        </select><br>
+        <button class="button" type="submit">Записать студента</button>
+    </form>
+    <div class="courses">
+
+    </div>
+
+</div>
+
+</body>
+<div></div>
+</html>

@@ -1,10 +1,11 @@
+from nassie.constants import *
 from nassie.controllers.pages import View
 
-class Index(View):
+class {{content.name}}(View):
     def __init__(self):
         super().__init__()
         self.name_template = ""
-        self.namespace = ":namespace:"
+        self.namespace = "{{content.namespace}}"
         self.title = ""
 
     def view_as(self, request):

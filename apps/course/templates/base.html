@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+
+        .menu {
+            display: inline-block;
+            margin-top: 40px;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none; /*убираем маркеры списка*/
+            margin: 0; /*убираем отступы*/
+            padding-left: 0; /*убираем отступы*/
+            margin-top: 25px; /*делаем отступ сверху*/
+        }
+
+        a {
+            text-decoration: none; /*убираем подчеркивание текста ссылок*/
+            background: #272f39; /*добавляем фон к пункту меню*/
+            color: #fff; /*меняем цвет ссылок*/
+            padding: 10px; /*добавляем отступ*/
+            font-family: arial; /*меняем шрифт*/
+            border-radius: 4px; /*добавляем скругление*/
+            -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+            -o-transition: all 0.3s 0.01s ease;
+            -webkit-transition: all 0.3s 0.01s ease;
+        }
+
+        a:hover {
+            background: #1c85bb; /*добавляем эффект при наведении*/
+        }
+
+        li {
+            float: left; /*Размещаем список горизонтально для реализации меню*/
+            margin-right: 5px; /*Добавляем отступ у пунктов меню*/
+        }
+
+        form input {
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 25%;
+            height: 35px;
+            border: 1px solid #ff8c00;
+        }
+
+        form textarea {
+            border: 1px solid #ff8c00;
+            width: 25%;
+            resize: none;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            width: 25%;
+            font-size: 14pt;
+            color: white;
+            background: #7F113E;
+            height: 55px;
+            padding: 10px;
+            border: 1px solid #F5C4AB;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #7d4157;
+        }
+
+        .courses {
+            margin-top: 2em;
+            width: 1000px;
+            height: 250px;
+            position: absolute;
+            left: 25%;
+        }
+
+        .course {
+            display: inline-block;
+            width: 100%;
+            border: 1px solid #747474;
+        }
+
+        .name, .description {
+            float: left;
+            display: block;
+            margin: 10px;
+        }
+
+        .name {
+            width: 30%;
+            font-size: 20px;
+        }
+
+        .description {
+            font-size: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <ul>
+        <li>
+            <a href="/index">Главная</a>
+        </li>
+        <li>
+            <a href="/about">Обо мне</a>
+        </li>
+        <li>
+            <a href="/form">Форма отправки</a>
+        </li>
+        <li>
+            <a href="/course">Курсы</a>
+        </li>
+        <li>
+            <a href="/students">Студенты</a>
+        </li>
+    </ul>
+</div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
