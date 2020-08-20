@@ -56,11 +56,11 @@
             border: 1px solid #ff8c00;
         }
 
-        form textarea {
+        form select {
+            height: 35px;
             border: 1px solid #ff8c00;
-            width: 25%;
-            resize: none;
-            height: 100px;
+            width: 15%;
+            margin-bottom: 20px;
         }
 
         .button {
@@ -71,12 +71,11 @@
             height: 55px;
             padding: 10px;
             border: 1px solid #F5C4AB;
+            cursor: pointer;
         }
-
         .button:hover {
             background: #7d4157;
         }
-
         .courses {
             margin-top: 2em;
             width: 1000px;
@@ -109,28 +108,28 @@
     </style>
 </head>
 <body>
-<div class="menu">
-    <ul>
-        <li>
-            <a href="/index">Главная</a>
-        </li>
-        <li>
-            <a href="/about">Обо мне</a>
-        </li>
-        <li>
-            <a href="/form">Форма отправки</a>
-        </li>
-        <li>
-            <a href="/course">Курсы</a>
-        </li>
-        <li>
-            <a href="/students">Студенты</a>
-        </li>
-    </ul>
-</div>
-<div class="content">
-    {% block content %}
-    {% endblock %}
-</div>
+    <div class="menu">
+         <ul>
+            <li>
+                <a href="/index">Главная</a>
+            </li>
+            <li>
+                <a href="/about">Обо мне</a>
+            </li>
+            <li>
+                <a href="/form">Форма отправки</a>
+            </li>
+             <li>
+                <a href="/course">Курсы</a>
+            </li>
+             <li>
+                <a href="/students">Студенты</a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

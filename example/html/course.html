@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<!-- saved from url=(0028)http://127.0.0.1:8000/course -->
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    {% block title %}
-    {% endblock %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Курсы</title>
     <style type="text/css">
         body {
             text-align: center;
@@ -51,12 +51,13 @@
             box-sizing: border-box;
             padding: 10px;
             margin-bottom: 20px;
+        / / margin-left: 40 %;
             width: 25%;
             height: 35px;
             border: 1px solid #ff8c00;
         }
 
-        form textarea {
+        form textarea{
             border: 1px solid #ff8c00;
             width: 25%;
             resize: none;
@@ -71,6 +72,7 @@
             height: 55px;
             padding: 10px;
             border: 1px solid #F5C4AB;
+            cursor: pointer;
         }
 
         .button:hover {
@@ -112,25 +114,45 @@
 <div class="menu">
     <ul>
         <li>
-            <a href="/index">Главная</a>
+            <a href="http://127.0.0.1:8000/index">Главная</a>
         </li>
         <li>
-            <a href="/about">Обо мне</a>
+            <a href="http://127.0.0.1:8000/about">Обо мне</a>
         </li>
         <li>
-            <a href="/form">Форма отправки</a>
+            <a href="http://127.0.0.1:8000/form">Форма отправки</a>
         </li>
         <li>
-            <a href="/course">Курсы</a>
+            <a href="http://127.0.0.1:8000/course">Курсы</a>
         </li>
         <li>
-            <a href="/students">Студенты</a>
+            <a href="http://127.0.0.1:8000/students">Студенты</a>
         </li>
     </ul>
 </div>
 <div class="content">
-    {% block content %}
-    {% endblock %}
+    <form method="post">
+        <input type="text" name="name" placeholder="Название курса"><br>
+        <textarea name="title" placeholder="Описание курса"></textarea><br>
+        <button class="button" type="submit">Создать курс</button>
+    </form>
+    <div class="courses">
+        <div class="course">
+            <div class="name">Python</div>
+            <div class="description">Стань спецом по Питон</div>
+        </div>
+        <div class="course">
+            <div class="name">Java</div>
+            <div class="description">Погружайся в Яву</div>
+        </div>
+        <div class="course">
+            <div class="name">C#</div>
+            <div class="description">Узнаешь что за решётка в конце</div>
+        </div>
+    </div>
+
 </div>
+
 </body>
+<div></div>
 </html>

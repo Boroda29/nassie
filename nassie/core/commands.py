@@ -31,6 +31,9 @@ def startapp(name_app):
         file_init = open(os.path.join(paths_pack["new_app"], f"__init__.py"), 'w', encoding='utf-8')
         file_init.close()
 
+        file_init = open(os.path.join(paths_pack["templates_app"], f"{name_app}.html"), 'w', encoding='utf-8')
+        file_init.close()
+
         for file_name, field in packet_name_files.items():
             path_file_template = os.path.join(paths_pack["ref"], f"{file_name}.txt")
             if not exists_path(path_file_template):

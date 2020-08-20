@@ -9,6 +9,7 @@ class View(abc.ABC):
         self.page = None
         self.namespace = None
         self.title = None
+        self.model = None
 
     def write_in_request(self, request: dict):
         for key, value in self.__dict__.items():

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+<!-- saved from url=(0030)http://127.0.0.1:8000/students -->
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    {% block title %}
-    {% endblock %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <title>Студенты</title>
+
     <style type="text/css">
         body {
             text-align: center;
@@ -56,11 +59,10 @@
             border: 1px solid #ff8c00;
         }
 
-        form textarea {
+        form select {
+            height: 35px;
             border: 1px solid #ff8c00;
-            width: 25%;
-            resize: none;
-            height: 100px;
+            width: 15%;
         }
 
         .button {
@@ -71,40 +73,7 @@
             height: 55px;
             padding: 10px;
             border: 1px solid #F5C4AB;
-        }
-
-        .button:hover {
-            background: #7d4157;
-        }
-
-        .courses {
-            margin-top: 2em;
-            width: 1000px;
-            height: 250px;
-            position: absolute;
-            left: 25%;
-        }
-
-        .course {
-            display: inline-block;
-            width: 100%;
-            border: 1px solid #747474;
-        }
-
-        .name, .description {
-            float: left;
-            display: block;
-            margin: 10px;
-        }
-
-        .name {
-            width: 30%;
-            font-size: 20px;
-        }
-
-        .description {
-            font-size: 20px;
-            font-style: italic;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -112,25 +81,39 @@
 <div class="menu">
     <ul>
         <li>
-            <a href="/index">Главная</a>
+            <a href="http://127.0.0.1:8000/index">Главная</a>
         </li>
         <li>
-            <a href="/about">Обо мне</a>
+            <a href="http://127.0.0.1:8000/about">Обо мне</a>
         </li>
         <li>
-            <a href="/form">Форма отправки</a>
+            <a href="http://127.0.0.1:8000/form">Форма отправки</a>
         </li>
         <li>
-            <a href="/course">Курсы</a>
+            <a href="http://127.0.0.1:8000/course">Курсы</a>
         </li>
         <li>
-            <a href="/students">Студенты</a>
+            <a href="http://127.0.0.1:8000/students">Студенты</a>
         </li>
     </ul>
 </div>
 <div class="content">
-    {% block content %}
-    {% endblock %}
+
+    <form method="post">
+        <input type="text" name="firstname" placeholder="Имя"><br>
+        <input type="text" name="lastname" placeholder="Фамилия"><br>
+        <select>
+            <option>Пункт 1</option>
+            <option>Пункт 2</option>
+        </select><br>
+        <button class="button" type="submit">Записать студента</button>
+    </form>
+    <div class="courses">
+
+    </div>
+
 </div>
+
 </body>
+<div></div>
 </html>

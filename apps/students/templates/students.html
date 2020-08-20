@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>{{content.title}}</title>
+{% endblock %}
+{% block content %}
+    <form method="post">
+        <input type="text" name="firstname" placeholder="Имя"><br>
+        <input type="text" name="lastname" placeholder="Фамилия"><br>
+        <select name="course">
+            {% for course in content.content_data.courses %}
+              <option value="{{course.name}}">{{course.name}}</option>
+            {% endfor %}
+        </select><br>
+        <button class="button" type="submit">Записать студента</button>
+    </form>
+    <div class="courses">
+        {% for student in content.content_data.students %}
+        <div class="course">
+            <div class="name">{{student.firstname}} {{student.lastname}}</div>
+            <div class="description">{{student.course}}</div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
