@@ -32,8 +32,8 @@ def startapp(name_app):
         file_init = open(os.path.join(paths_pack["new_app"], f"__init__.py"), 'w', encoding='utf-8')
         file_init.close()
 
-        name_app = open(os.path.join(paths_pack["templates_app"], f"{name_app}.html"), 'w', encoding='utf-8')
-        name_app.close()
+        file_html = open(os.path.join(paths_pack["templates_app"], f"{name_app}.html"), 'w', encoding='utf-8')
+        file_html.close()
 
         for file_name, field in packet_name_files.items():
             path_file_template = os.path.join(paths_pack["ref"], f"{file_name}.txt")
@@ -44,10 +44,10 @@ def startapp(name_app):
 
             path_file_new = os.path.join(paths_pack["new_app"], f"{file_name}.py")
             file_page = open(path_file_new, 'w', encoding='utf-8')
-            file_page.write(factory.render(name_app))
+            file_page.write(factory.render(file_name, name_app=name_app))
             file_page.close()
 
-def help_cmd():
+def help_cmd(option):
     file_help = open(os.path.join(BASE_DIR, "nassie", "docs", "ref", "help.txt"), "r", encoding="utf-8")
     text_help = file_help.read()
     file_help.close()

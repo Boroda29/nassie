@@ -5,7 +5,7 @@ from nassie.decors import fill_request
 class {{content.name}}(View):
     def __init__(self):
         super().__init__()
-        self.name_template = ""
+        self.name_template = "{{content.namespace}}.html"
         self.namespace = "{{content.namespace}}"
         self.title = ""
 

@@ -26,4 +26,4 @@ def execute(argv):
 
 
 if __name__ == '__main__':
-    execute(["", "alksjd"])
+    execute(["help"])

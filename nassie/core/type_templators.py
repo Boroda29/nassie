@@ -27,11 +27,15 @@ class HTML(TemplatorType):
 
 class App(TemplatorType):
     def render(self, template_name, **kwargs):
+        name_app = "index"
+        if kwargs.get("name_app"):
+            name_app = kwargs['name_app']
+
         env = Environment()
         folder = os.path.join(BASE_DIR, "nassie", "docs", "ref")
         env.loader = FileSystemLoader(folder)
-        template = env.get_template("pages.txt")
+        template = env.get_template(f"{template_name}.txt")
 
-        file = template.render(content={"name": f"{template_name.title()}",
-                                        "namespace": f"{template_name}"})
+        file = template.render(content={"name": f"{name_app.title()}",
+                                        "namespace": f"{name_app}"})
         return file
